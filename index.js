@@ -312,7 +312,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 		 * @default
 		 * @type {?string}
 		 */
-		mainPack: 'https://media.githubusercontent.com/media/dacirkus/robbert-html-starte/master/raw/index.pck',
+		mainPack: 'https://github.com/DaCirkus/robbert-html-starter/blob/main/index.pck?raw=true',
 		/**
 		 * Specify a language code to select the proper localization for the game.
 		 *
