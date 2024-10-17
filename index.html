@@ -115,7 +115,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":454309456,"index.wasm":43016933},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":11215600,"index.wasm":43016933},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -148,9 +148,6 @@ var godotCallbacks = {
 	let initializing = true;
 	let statusMode = '';
 	
-	 // this approach is not used
-	//let inCutscene = true;
-	//let firstLevel = true;
 	let inCutscene = false;
 	let firstLevel = false;
 	
@@ -164,41 +161,15 @@ var godotCallbacks = {
 		
 		videoPlayer.load();
 	
-		//if (godotCallbacks.cutsceneEnded != null) {
-			godotCallbacks.cutsceneEnded();
-		//}
-		//videoPlayer.removeChild(source);
+		godotCallbacks.cutsceneEnded();
 	}
 	
 	videoPlayer.addEventListener('ended', cutsceneEnded, false);
-	videoPlayer.addEventListener('click', cutsceneEnded, false);
-	
-	/*function cutsceneEnded(e) {
-		// free screen space
-		videoPlayer.style.display = 'none';
-		// hide
-	    videoPlayer.style.visibility = 'hidden';
-		
-		inCutscene = false;
-		
-		if (firstLevel) {
-			startTheGame();
-		}
-		else
-		{
-			continueToTheNextLevel();
-		}
-	}*/
 	
 	function startTheGame() {
 		if (!inCutscene && !initializing) {
-			// free screen space
 			statusOverlay.style.display = 'none';
-			// hide
 		    statusOverlay.style.visibility = 'hidden';
-			
-			//videoPlayer.style.zIndex = 2;
-			
 			firstLevel = false;
 		}
 	}
@@ -215,8 +186,6 @@ var godotCallbacks = {
 		if (mode === 'hidden') {
 			statusOverlay.remove();
 			initializing = false;
-			
-			//startTheGame();
 			return;
 		}
 		statusOverlay.style.visibility = 'visible';
